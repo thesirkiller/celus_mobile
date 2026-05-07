@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { colors } from '../theme/colors';
 import { supabase } from '../services/supabase';
+import { addToQueue, processQueue } from '../services/syncQueue';
+import NetInfo from '@react-native-netinfo/netinfo';
 
 export default function ArticleDetailScreen({ route, navigation }) {
   const { item, type } = route.params;
@@ -9,23 +11,33 @@ export default function ArticleDetailScreen({ route, navigation }) {
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   const toggleFavorite = async () => {
-    // Para UX rápida: inverte no UI primeiro
     setIsFavorite(!isFavorite);
     
     const { data: userData } = await supabase.auth.getUser();
     if (!userData?.user) return;
     
-    if (!isFavorite) {
-      await supabase.from('saved_articles').insert({
-        user_id: userData.user.id,
-        article_id: item.id,
-        article_type: type,
-        is_favorite: true
-      });
+    const payload = {
+      user_id: userData.user.id,
+      article_id: item.id,
+      article_type: type,
+      is_favorite: true
+    };
+
+    const state = await NetInfo.fetch();
+    
+    if (state.isConnected) {
+      // Tenta online
+      if (!isFavorite) {
+        await supabase.from('saved_articles').insert(payload);
+      } else {
+        await supabase.from('saved_articles').delete().eq('user_id', userData.user.id).eq('article_id', item.id);
+      }
     } else {
-      await supabase.from('saved_articles').delete()
-        .eq('user_id', userData.user.id)
-        .eq('article_id', item.id);
+      // Salva na fila offline
+      await addToQueue({
+        type: !isFavorite ? 'FAVORITE_ADD' : 'FAVORITE_REMOVE',
+        payload
+      });
     }
   };
 
