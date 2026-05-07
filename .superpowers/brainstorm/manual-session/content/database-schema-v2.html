@@ -1,0 +1,55 @@
+<h2>Proposta de Esquema: Supabase (Revisada)</h2>
+<p class="subtitle">Adicionando campos ausentes identificados no Cadastro</p>
+
+<div class="section">
+  <h3>Tabela: profiles</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <p>Dados estendidos do usuário baseados no <code>SignUpCall</code> original.</p>
+      <ul class="label" style="columns: 2;">
+        <li>id (uuid -> auth.users)</li>
+        <li>name (text)</li>
+        <li>cpf (text)</li>
+        <li>phone (text)</li>
+        <li>education_level (text)</li>
+        <li style="color: #4ade80;">nationality (text) - <em>Adicionado</em></li>
+        <li style="color: #4ade80;">country_of_operation (text) - <em>Adicionado</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Outras Tabelas (Mantidas)</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-body">
+        <h3>Conteúdo</h3>
+        <p class="label">laudus, protocolus, resumus</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3>Interações</h3>
+        <p class="label">saved_articles, comments, reading_history</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="approve_schema_v2" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Agora sim, Aprovar!</h3>
+      <p>Todos os campos do cadastro estão cobertos. Podemos gerar o SQL.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="wait_more_checks" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Calma, revisar mais</h3>
+      <p>Quero que você olhe outra tela antes da gente fechar o banco.</p>
+    </div>
+  </div>
+</div>

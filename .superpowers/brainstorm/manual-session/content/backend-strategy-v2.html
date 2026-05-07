@@ -1,0 +1,56 @@
+<h2>Estratégia de Backend: Supabase</h2>
+<p class="subtitle">Mapeando endpoints do Railway para o ecossistema Supabase</p>
+
+<div class="section">
+  <h3>Funcionalidades Identificadas (Backend Railway)</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <ul>
+        <li><strong>Auth:</strong> Email/Password, Google Sign-In</li>
+        <li><strong>Conteúdo:</strong> Laudus, Protocolus, Resumus (Listagem e Detalhes)</li>
+        <li><strong>Interação:</strong> Comentários, Ratings, Favoritos</li>
+        <li><strong>Histórico:</strong> Histórico de leitura (Recent Reading)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Nossa Transição</h3>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Vantagens Supabase</h4>
+      <ul>
+        <li>Auth nativo (Google/Email)</li>
+        <li>PostgreSQL com RLS (Segurança)</li>
+        <li>Edge Functions (para lógica complexa)</li>
+        <li>Realtime (notificações Expo)</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Esforço de Migração</h4>
+      <ul>
+        <li>Recriar tabelas e relacionamentos</li>
+        <li>Migrar lógica de cálculo médico</li>
+        <li>Configurar políticas de acesso (RLS)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="database_first" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Database First</h3>
+      <p>Começar criando as tabelas no Supabase para espelhar o Railway.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="ui_first" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>UI First (Telas Identificadas)</h3>
+      <p>Começar pelas telas de Login/Home e ir conectando o Supabase aos poucos.</p>
+    </div>
+  </div>
+</div>

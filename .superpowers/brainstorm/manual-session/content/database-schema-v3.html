@@ -1,0 +1,62 @@
+<h2>Proposta de Esquema: Supabase (V3 - Assinaturas)</h2>
+<p class="subtitle">Adicionando a estrutura de Planos e Assinaturas</p>
+
+<div class="section">
+  <h3>Tabelas de Assinatura (Subscriptions)</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div>
+          <h4>plans</h4>
+          <p class="label">Planos Disponíveis</p>
+          <ul style="font-size: 0.8em; columns: 1;">
+            <li>id (uuid)</li>
+            <li>name (text) - ex: Mensal, Anual</li>
+            <li>description (text)</li>
+            <li>price (numeric)</li>
+            <li>interval (text) - ex: month, year</li>
+            <li>active (bool)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>subscriptions</h4>
+          <p class="label">Assinaturas dos Usuários</p>
+          <ul style="font-size: 0.8em; columns: 1;">
+            <li>id (uuid)</li>
+            <li>user_id (uuid)</li>
+            <li>plan_id (uuid)</li>
+            <li>status (text) - ex: active, canceled</li>
+            <li>current_period_end (timestamp)</li>
+            <li>provider_subscription_id (text) - ID da loja/gateway</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Resumo Final do Banco</h3>
+  <ul class="label" style="columns: 2;">
+    <li>auth.users (Email/Senha)</li>
+    <li>profiles (Dados pessoais)</li>
+    <li>laudus (Conteúdo)</li>
+    <li>protocolus (Conteúdo)</li>
+    <li>resumus (Conteúdo)</li>
+    <li>saved_articles (Favoritos)</li>
+    <li>comments (Feedback)</li>
+    <li>reading_history (Recentes)</li>
+    <li style="color: #4ade80;">plans (Catálogo)</li>
+    <li style="color: #4ade80;">subscriptions (Acessos)</li>
+  </ul>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="approve_schema_final" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Aprovado!</h3>
+      <p>O banco está completo (Auth, Perfil, Conteúdo, Interações e Assinaturas). Pode fechar o design.</p>
+    </div>
+  </div>
+</div>

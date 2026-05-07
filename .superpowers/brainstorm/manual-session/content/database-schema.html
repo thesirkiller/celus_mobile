@@ -1,0 +1,82 @@
+<h2>Proposta de Esquema: Supabase</h2>
+<p class="subtitle">Estrutura de tabelas baseada no backend original (Railway)</p>
+
+<div class="section">
+  <h3>Tabelas de Conteúdo</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-body">
+        <h3>laudus / protocolus / resumus</h3>
+        <p>Tabelas principais de conteúdo médico.</p>
+        <ul class="label">
+          <li>id (uuid)</li>
+          <li>title (text)</li>
+          <li>specialty (text)</li>
+          <li>content (text/json)</li>
+          <li>images (text[])</li>
+          <li>status (text)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3>profiles</h3>
+        <p>Dados estendidos do usuário.</p>
+        <ul class="label">
+          <li>id (uuid - references auth.users)</li>
+          <li>name (text)</li>
+          <li>cpf (text)</li>
+          <li>phone (text)</li>
+          <li>education_level (text)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Relacionamentos e Interações</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div>
+          <h4>saved_articles</h4>
+          <p class="label">Favoritos e Marcadores</p>
+          <ul style="font-size: 0.8em;">
+            <li>user_id</li>
+            <li>article_id</li>
+            <li>article_type</li>
+            <li>is_favorite (bool)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>comments</h4>
+          <p class="label">Social e Feedback</p>
+          <ul style="font-size: 0.8em;">
+            <li>user_id</li>
+            <li>resource_id</li>
+            <li>comment (text)</li>
+            <li>rating (int)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="approve_schema" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Aprovar e Gerar SQL</h3>
+      <p>Esquema parece correto. Vamos gerar as migrações para o Supabase.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="adjust_schema" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Ajustar Campos</h3>
+      <p>Faltou algo ou precisamos mudar algum relacionamento.</p>
+    </div>
+  </div>
+</div>

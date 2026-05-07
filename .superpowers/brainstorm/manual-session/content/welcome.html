@@ -1,0 +1,31 @@
+<h2>Migração Celus: Flutter &rarr; React Native</h2>
+<p class="subtitle">Planejando a tradução 1:1 com backend Supabase</p>
+
+<div class="section">
+  <h3>Estrutura de Telas Identificada</h3>
+  <p>Encontrei as seguintes telas no app Flutter original que serão migradas:</p>
+  <ul>
+    <li><strong>Autenticação:</strong> Login, Cadastro, Esqueci a Senha</li>
+    <li><strong>Home:</strong> Dashboard com acesso rápido aos serviços</li>
+    <li><strong>Conteúdo:</strong> Laudus, Protocolus, ResumUS, MedUltra</li>
+    <li><strong>Ferramentas:</strong> Calculadoras Médicas (Fetal, Gestacional, IOTA)</li>
+    <li><strong>Gestão:</strong> Favoritos, Recentes, Salvos, Perfil e Planos</li>
+  </ul>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="confirm_1_1" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Manter Visual 1:1</h3>
+      <p>Traduzir exatamente o layout atual do Flutter (Material Design).</p>
+    </div>
+  </div>
+  <div class="option" data-choice="modernize" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Modernizar Levemente</h3>
+      <p>Manter a estrutura 1:1 mas usar componentes nativos do iOS/Android via Expo.</p>
+    </div>
+  </div>
+</div>
