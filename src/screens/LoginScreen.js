@@ -13,8 +13,12 @@ export default function LoginScreen({ navigation }) {
   const handleLogin = async () => {
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) alert(error.message);
     setLoading(false);
+    if (error) {
+      alert(error.message);
+    } else {
+      navigation.replace('Home');
+    }
   };
 
   return (
