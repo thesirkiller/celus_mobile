@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpaci
 import { colors } from '../theme/colors';
 import { supabase } from '../services/supabase';
 import { addToQueue, processQueue } from '../services/syncQueue';
-import NetInfo from '@react-native-netinfo/netinfo';
+import NetInfo from '@react-native-community/netinfo';
 
 export default function ArticleDetailScreen({ route, navigation }) {
   const { item, type } = route.params;
