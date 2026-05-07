@@ -1,1 +1,12 @@
-﻿export const colors = { primary: \"#35B48B\", secondary: \"#39D2C0\", tertiary: \"#EE8B60\", alternate: \"#E0E3E7\", primaryText: \"#181D27\", secondaryText: \"#717680\", primaryBackground: \"#F1F4F8\", secondaryBackground: \"#FFFFFF\", success: \"#249689\", error: \"#D92D20\", warning: \"#F9CF58\", gray900: \"#181D27\", gray700: \"#414651\", gray600: \"#475467\", gray500: \"#717680\", gray400: \"#A4A7AE\", gray300: \"#D5D7DA\" };
+export const colors = {
+  primaryBackground: '#FFFFFF',
+  primaryText: '#101213',
+  secondaryText: '#57636C',
+  primaryColor: '#4B39EF',
+  secondaryColor: '#39D2C0',
+  tertiaryColor: '#EE8B60',
+  alternate: '#E0E3E7',
+  error: '#FF5963',
+  inputBackground: '#F1F4F8',
+  inputBorder: '#E0E3E7',
+};
