@@ -9,6 +9,8 @@ import LaudusScreen from '../screens/LaudusScreen';
 import ProtocolusScreen from '../screens/ProtocolusScreen';
 import ResumusScreen from '../screens/ResumusScreen';
 import ArticleDetailScreen from '../screens/ArticleDetailScreen';
+import MedUltraScreen from '../screens/MedUltraScreen';
+import GestationalCalculator from '../screens/calculators/GestationalCalculator';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,8 @@ export default function AppNavigator() {
       <Stack.Screen name="Protocolus" component={ProtocolusScreen} />
       <Stack.Screen name="Resumus" component={ResumusScreen} />
       <Stack.Screen name="ArticleDetail" component={ArticleDetailScreen} />
+      <Stack.Screen name="MedUltra" component={MedUltraScreen} />
+      <Stack.Screen name="GestationalCalculator" component={GestationalCalculator} />
     </Stack.Navigator>
   );
 }
