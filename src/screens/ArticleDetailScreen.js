@@ -1,9 +1,33 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { colors } from '../theme/colors';
+import { supabase } from '../services/supabase';
 
 export default function ArticleDetailScreen({ route, navigation }) {
   const { item, type } = route.params;
+
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
+  const toggleFavorite = async () => {
+    // Para UX rápida: inverte no UI primeiro
+    setIsFavorite(!isFavorite);
+    
+    const { data: userData } = await supabase.auth.getUser();
+    if (!userData?.user) return;
+    
+    if (!isFavorite) {
+      await supabase.from('saved_articles').insert({
+        user_id: userData.user.id,
+        article_id: item.id,
+        article_type: type,
+        is_favorite: true
+      });
+    } else {
+      await supabase.from('saved_articles').delete()
+        .eq('user_id', userData.user.id)
+        .eq('article_id', item.id);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -12,6 +36,11 @@ export default function ArticleDetailScreen({ route, navigation }) {
           <Text style={styles.back}>Voltar</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle} numberOfLines={1}>{item.specialty || 'Detalhes'}</Text>
+        <TouchableOpacity onPress={toggleFavorite}>
+          <Text style={{ fontSize: 24, color: isFavorite ? colors.error : colors.secondaryText }}>
+            {isFavorite ? '♥' : '♡'}
+          </Text>
+        </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.scroll}>
         {item.images && item.images.length > 0 && (
