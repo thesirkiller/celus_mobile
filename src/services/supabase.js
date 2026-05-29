@@ -1,1 +1,15 @@
-﻿import \"react-native-url-polyfill/auto\"; import { createClient } from \"@supabase/supabase-js\"; import AsyncStorage from \"@react-native-async-storage/async-storage\"; const supabaseUrl = \"https://yvnoykhhezytmwgolxsz.supabase.co\"; const supabaseAnonKey = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2bm95a2hoZXp5dG13Z29seHN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU2MzE5NTYsImV4cCI6MjA3MTIwNzk1Nn0.N7_boWShF5q8PcdJZ2oE9TJVGEFtzKF277lU4idJAeo\"; export const supabase = createClient(supabaseUrl, supabaseAnonKey, { auth: { storage: AsyncStorage, autoRefreshToken: true, persistSession: true, detectSessionInUrl: false } });
+import "react-native-url-polyfill/auto";
+import { createClient } from "@supabase/supabase-js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const supabaseUrl = "https://ysoezilitysytelxngzd.supabase.co";
+const supabaseAnonKey = "sb_publishable_gywn0kgOsAO4IaGEJ-YPPQ_PmmM3KbW";
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
+});

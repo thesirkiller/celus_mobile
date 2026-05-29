@@ -25,7 +25,7 @@ export default function LoginScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.inner}>
         <View style={styles.logoContainer}>
-          <Image source={require('../../assets/icon.png')} style={styles.logo} />
+          <Image source={require('../../assets/230x0w.webp')} style={styles.logo} resizeMode="contain" />
           <Text style={styles.title}>Celus</Text>
           <Text style={styles.subtitle}>Faça login para continuar</Text>
         </View>

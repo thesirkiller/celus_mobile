@@ -6,10 +6,19 @@ export default function ArticleCard({ item, onPress }) {
   // Assume que item tem: title, specialty, created_at, images[]
   const imageUrl = item.images && item.images.length > 0 ? item.images[0] : null;
 
+  let imageSource = null;
+  if (imageUrl) {
+    if (typeof imageUrl === 'number' || (typeof imageUrl === 'object' && imageUrl.uri === undefined)) {
+      imageSource = imageUrl;
+    } else {
+      imageSource = { uri: imageUrl };
+    }
+  }
+
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
-      {imageUrl ? (
-        <Image source={{ uri: imageUrl }} style={styles.image} />
+      {imageSource ? (
+        <Image source={imageSource} style={styles.image} resizeMode="contain" />
       ) : (
         <View style={styles.placeholderImage}>
           <Text style={styles.placeholderText}>Sem Imagem</Text>
